@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CityPoint</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/hwk4oxi.css">
+<style>
+  :root {
+    --orange: #f08817;
+    --navy: #141838;
+    --coral: #E8614A;
+    --teal: #2A7B8C;
+    --yellow: #F0C030;
+    --white: #ffffff;
+    --light: #f5f4f0;
+    --gray: #8a8a8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Heebo", "postea-hebrew-vf", 'Lexend Deca', sans-serif;
+    font-weight: 400;
+    background: var(--white);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: "snaga-unicase-display", "Heebo", sans-serif;
+    font-weight: 700;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(20, 24, 56, 0.95);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .nav-logo .o-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 2.5px solid var(--orange);
+    border-radius: 50%;
+    position: relative;
+    margin: 0 1px;
+  }
+
+  .nav-logo .o-mark::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--orange);
+    border-radius: 50%;
+    position: absolute;
+  }
+
+  .nav-logo .dot {
+    width: 5px;
+    height: 5px;
+    background: var(--orange);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 1px;
+    align-self: flex-end;
+    margin-bottom: 3px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    transition: opacity 0.2s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero-dots {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-dot {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.12;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 40px;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--orange);
+    opacity: 0.5;
+  }
+
+  .hero-title {
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 12px;
+  }
+
+  .hero-title .city { color: var(--white); }
+  .hero-title .point { color: var(--orange); }
+
+  .hero-title-dot {
+    display: inline-block;
+    width: clamp(8px, 1.2vw, 14px);
+    height: clamp(8px, 1.2vw, 14px);
+    background: var(--orange);
+    border-radius: 50%;
+    margin-right: 3px;
+    vertical-align: super;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    margin-bottom: 52px;
+    line-height: 1.6;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--orange);
+    color: var(--white);
+    padding: 16px 36px;
+    border-radius: 36px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 32px rgba(240,136,23,0.35);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(240,136,23,0.45);
+  }
+
+  .btn-ghost {
+    border: 1.5px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    padding: 16px 36px;
+    border-radius: 36px;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* scroll indicator */
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .scroll-hint-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollLine 1.5s ease-in-out infinite;
+  }
+
+  @keyframes dotPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(240,136,23,0.4); transform: scale(1); }
+    50% { box-shadow: 0 0 0 28px rgba(240,136,23,0); transform: scale(1.08); }
+  }
+
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ===== CONCEPT SECTION ===== */
+  .concept {
+    background: var(--light);
+    padding: 120px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--orange);
+    border-radius: 50%;
+  }
+
+  .concept-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+    color: var(--navy);
+  }
+
+  .concept-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--gray);
+    font-weight: 300;
+    margin-bottom: 36px;
+  }
+
+  .concept-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dot-diagram {
+    width: 320px;
+    height: 320px;
+    position: relative;
+  }
+
+  .dot-diagram .center-dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: var(--orange);
+    border-radius: 50%;
+    box-shadow: 0 0 0 12px rgba(240,136,23,0.12), 0 0 0 28px rgba(240,136,23,0.06);
+  }
+
+  .dot-orbit {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px dashed rgba(20,24,56,0.15);
+    border-radius: 50%;
+  }
+
+  .orbit-dot {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    top: 50%;
+    transform-origin: center;
+  }
+
+  .orbit-label {
+    position: absolute;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--navy);
+  }
+
+  /* ===== DISTRICTS ===== */
+  .districts {
+    background: var(--white);
+    padding: 120px 60px;
+  }
+
+  .districts-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .section-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    color: var(--gray);
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .districts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .district-card {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 3/4;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .district-card:hover { transform: translateY(-8px); }
+
+  .district-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .district-card.sde-dov .district-bg { background: linear-gradient(160deg, #E8614A 0%, #c94030 100%); }
+  .district-card.tzrifin .district-bg { background: linear-gradient(160deg, #2A7B8C 0%, #1a5a68 100%); }
+  .district-card.kiryat .district-bg { background: linear-gradient(160deg, #F0C030 0%, #d4a020 100%); }
+
+  .district-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    background-image: radial-gradient(circle, white 2px, transparent 2px);
+    background-size: 28px 28px;
+  }
+
+  .district-content {
+    position: absolute;
+    inset: 0;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .district-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .district-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    background: rgba(0,0,0,0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  .district-dot {
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .district-dot::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  .district-bottom {}
+
+  .district-name {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .district-by {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .district-brand {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== DOT SYSTEM ===== */
+  .dot-system {
+    background: var(--navy);
+    padding: 120px 60px;
+    color: var(--white);
+  }
+
+  .dot-system-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin: 72px auto 0;
+    text-align: center;
+  }
+
+  .dot-use {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .dot-use-icon {
+    width: 72px;
+    height: 72px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .dot-use-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== STATS ===== */
+  .stats {
+    background: var(--orange);
+    padding: 80px 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    gap: 40px;
+  }
+
+  .stat-number {
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy);
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .footer-dot {
+    width: 5px;
+    height: 5px;
+    background: var(--orange);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .concept { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
+    .districts { padding: 80px 24px; }
+    .districts-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .district-card { aspect-ratio: 4/3; }
+    .dot-system { padding: 80px 24px; }
+    .dot-system-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .stats { grid-template-columns: repeat(2, 1fr); padding: 60px 24px; }
+    footer { flex-direction: column; gap: 28px; padding: 40px 24px; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 14px 16px; }
+    .hero-content { padding: 0 20px; }
+    .hero-sub { font-size: 15px; margin-bottom: 36px; }
+    .btn-primary, .btn-ghost { padding: 13px 26px; font-size: 14px; }
+    .concept { padding: 60px 20px; gap: 36px; }
+    .concept-visual { display: none; }
+    .districts { padding: 60px 20px; }
+    .districts-header { margin-bottom: 40px; }
+    .districts-grid { grid-template-columns: 1fr; max-width: 100%; }
+    .district-card { aspect-ratio: 16/9; }
+    .dot-system { padding: 60px 20px; }
+    .dot-system-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+    .stats { grid-template-columns: repeat(2, 1fr); padding: 48px 20px; gap: 24px; }
+    footer { padding: 32px 20px; gap: 20px; }
+    .color-section { padding: 60px 20px !important; }
+    #color-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 933.02 126.74" style="height:32px;width:auto;">
+  <g>
+    <path fill="white" d="M0,63.29C0,26.86,23,0,59.76,0c28.71,0,51.03,16.79,53.72,45.32h-29.54c-1.85-13.43-10.41-21.66-24.17-21.66-19.81,0-29.54,16.95-29.54,39.62s9.57,39.78,29.54,39.78c13.76,0,22.66-8.23,24.51-23.5h29.54c-2.35,30.05-25.35,47.17-54.05,47.17C22.49,126.74,0,99.71,0,63.29Z"/>
+    <path fill="white" d="M127.75,2.52h28.87v121.7h-28.87V2.52Z"/>
+    <path fill="white" d="M189.87,86.62V26.19h-21.49V2.52h93v23.67h-42.47v56.07c0,14.94,5.37,19.81,18.97,19.81,6.88,0,13.93-1.34,20.65-3.52h.67v23.67c-9.06,3.02-19.98,4.53-30.55,4.53-27.7,0-38.78-11.08-38.78-40.12Z"/>
+    <path fill="white" d="M283.88,124.73v-21.32h.67c2.52.67,5.37,1.01,9.9,1.01,7.72,0,12.92-2.85,16.62-9.9l1.01-2.18h-8.39L267.26,2.52h30.72l21.65,57.24c1.34,3.19,2.52,6.55,3.69,9.9h.5c1.18-3.53,2.18-6.55,3.53-9.9l20.65-57.24h29.71l-36.93,92.16c-9.23,23.5-20.14,32.06-40.96,32.06-6.04,0-11.25-.67-15.95-2.02Z"/>
+    <path fill="white" d="M386.11,2.52h49.52c27.03,0,45.99,14.1,45.99,40.29s-19.14,40.96-45.99,40.96h-20.65v40.46h-28.87V2.52ZM452.59,43.14c0-12.76-7.22-17.63-19.47-17.63h-18.13v35.25h18.13c12.09,0,19.47-5.04,19.47-17.63Z"/>
+    <path fill="white" d="M629.87,2.52h28.87v121.7h-28.87V2.52Z"/>
+    <path fill="white" d="M704.24,2.52v17.29h.67c8.9-13.09,21.66-19.81,39.11-19.81,25.85,0,39.45,14.77,39.45,45.66v78.56h-29.04V50.19c0-18.3-6.55-26.02-20.65-26.02-17.12,0-28.37,11.75-28.37,29.38v70.67h-28.87V2.52h27.7Z"/>
+    <path fill="white" d="M816.71,86.62V26.19h-21.49V2.52h93v23.67h-42.47v56.07c0,14.94,5.37,19.81,18.97,19.81,6.88,0,13.93-1.34,20.65-3.52h.67v23.67c-9.06,3.02-19.98,4.53-30.55,4.53-27.7,0-38.78-11.08-38.78-40.12Z"/>
+    <circle fill="#f08817" cx="914.53" cy="103.6" r="18.49"/>
+    <path fill="white" d="M592.34,43.96c-5.64,2.57-9.01,8.31-8.87,14.51.02.7.02,1.4,0,2.11.15,6.58-1.11,12.51-3.79,17.79-2.68,5.28-6.39,9.41-11.13,12.4-4.75,2.98-10.1,4.48-16.07,4.48s-11.56-1.49-16.3-4.48c-4.75-2.98-8.49-7.12-11.25-12.4-2.75-5.28-4.06-11.21-3.9-17.79-.15-6.73,1.15-12.7,3.9-17.91,2.75-5.2,6.5-9.33,11.25-12.4.86-.56,1.75-1.06,2.66-1.52,4.92-2.45,7.77-7.74,7.4-13.23h0c-.69-10.22-11.21-16.91-20.67-12.97-2.15.89-4.24,1.91-6.26,3.04-9.72,5.43-17.37,12.89-22.96,22.38-5.59,9.49-8.38,20.35-8.38,32.6s2.79,23.11,8.38,32.6c5.59,9.49,13.24,16.95,22.96,22.38,9.72,5.43,20.77,8.15,33.17,8.15s23.22-2.72,32.94-8.15c9.72-5.43,17.33-12.89,22.84-22.38,5.51-9.49,8.26-20.35,8.26-32.6,0-.46,0-.92-.01-1.38-.21-12.3-12.98-20.34-24.17-15.25h0Z"/>
+    <circle fill="#f08817" cx="575.49" cy="21.19" r="20.12"/>
+  </g>
+</svg></div>
+  <ul class="nav-links">
+    <li><a href="#concept">הרעיון</a></li>
+    <li><a href="#districts">המחתמים</a></li>
+    <li><a href="#about">אודות</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dots" aria-hidden="true">
+    <div class="hero-dot" style="width:300px;height:300px;background:var(--orange);top:-80px;right:-60px;animation-delay:0s;"></div>
+    <div class="hero-dot" style="width:180px;height:180px;background:var(--coral);bottom:100px;left:-40px;animation-delay:2s;"></div>
+    <div class="hero-dot" style="width:120px;height:120px;background:var(--teal);top:40%;right:10%;animation-delay:4s;"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow" id="hero-eyebrow" style="opacity:0;">New Places. New Stories</div>
+
+    <!-- Dot → Logo animation container -->
+    <div id="logo-anim" style="position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:28px;height:100px;">
+      <!-- The dot that morphs -->
+      <div id="hero-dot-pulse" style="
+        width:80px;height:80px;
+        background:var(--orange);
+        border-radius:50%;
+        position:absolute;
+        transition:all 0.9s cubic-bezier(0.4,0,0.2,1);
+      "></div>
+      <div id="click-me-label" style="position:absolute;top:calc(50% + 52px);left:50%;transform:translateX(-50%);font-size:11px;font-weight:600;letter-spacing:3px;color:rgba(255,255,255,0.45);text-transform:uppercase;pointer-events:none;transition:opacity 0.4s;white-space:nowrap;">CLICK ME</div>
+      <!-- Full logo, hidden initially -->
+      <div id="hero-logo" style="opacity:0;transform:scale(0.85);transition:opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;position:absolute;pointer-events:none;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 933.02 126.74" style="height:72px;width:auto;">
+          <path fill="white" d="M0,63.29C0,26.86,23,0,59.76,0c28.71,0,51.03,16.79,53.72,45.32h-29.54c-1.85-13.43-10.41-21.66-24.17-21.66-19.81,0-29.54,16.95-29.54,39.62s9.57,39.78,29.54,39.78c13.76,0,22.66-8.23,24.51-23.5h29.54c-2.35,30.05-25.35,47.17-54.05,47.17C22.49,126.74,0,99.71,0,63.29Z"/>
+          <path fill="white" d="M127.75,2.52h28.87v121.7h-28.87V2.52Z"/>
+          <path fill="white" d="M189.87,86.62V26.19h-21.49V2.52h93v23.67h-42.47v56.07c0,14.94,5.37,19.81,18.97,19.81,6.88,0,13.93-1.34,20.65-3.52h.67v23.67c-9.06,3.02-19.98,4.53-30.55,4.53-27.7,0-38.78-11.08-38.78-40.12Z"/>
+          <path fill="white" d="M283.88,124.73v-21.32h.67c2.52.67,5.37,1.01,9.9,1.01,7.72,0,12.92-2.85,16.62-9.9l1.01-2.18h-8.39L267.26,2.52h30.72l21.65,57.24c1.34,3.19,2.52,6.55,3.69,9.9h.5c1.18-3.53,2.18-6.55,3.53-9.9l20.65-57.24h29.71l-36.93,92.16c-9.23,23.5-20.14,32.06-40.96,32.06-6.04,0-11.25-.67-15.95-2.02Z"/>
+          <path fill="white" d="M386.11,2.52h49.52c27.03,0,45.99,14.1,45.99,40.29s-19.14,40.96-45.99,40.96h-20.65v40.46h-28.87V2.52ZM452.59,43.14c0-12.76-7.22-17.63-19.47-17.63h-18.13v35.25h18.13c12.09,0,19.47-5.04,19.47-17.63Z"/>
+          <path fill="white" d="M629.87,2.52h28.87v121.7h-28.87V2.52Z"/>
+          <path fill="white" d="M704.24,2.52v17.29h.67c8.9-13.09,21.66-19.81,39.11-19.81,25.85,0,39.45,14.77,39.45,45.66v78.56h-29.04V50.19c0-18.3-6.55-26.02-20.65-26.02-17.12,0-28.37,11.75-28.37,29.38v70.67h-28.87V2.52h27.7Z"/>
+          <path fill="white" d="M816.71,86.62V26.19h-21.49V2.52h93v23.67h-42.47v56.07c0,14.94,5.37,19.81,18.97,19.81,6.88,0,13.93-1.34,20.65-3.52h.67v23.67c-9.06,3.02-19.98,4.53-30.55,4.53-27.7,0-38.78-11.08-38.78-40.12Z"/>
+          <circle fill="#f08817" cx="914.53" cy="103.6" r="18.49"/>
+          <path fill="white" d="M592.34,43.96c-5.64,2.57-9.01,8.31-8.87,14.51.02.7.02,1.4,0,2.11.15,6.58-1.11,12.51-3.79,17.79-2.68,5.28-6.39,9.41-11.13,12.4-4.75,2.98-10.1,4.48-16.07,4.48s-11.56-1.49-16.3-4.48c-4.75-2.98-8.49-7.12-11.25-12.4-2.75-5.28-4.06-11.21-3.9-17.79-.15-6.73,1.15-12.7,3.9-17.91,2.75-5.2,6.5-9.33,11.25-12.4.86-.56,1.75-1.06,2.66-1.52,4.92-2.45,7.77-7.74,7.4-13.23h0c-.69-10.22-11.21-16.91-20.67-12.97-2.15.89-4.24,1.91-6.26,3.04-9.72,5.43-17.37,12.89-22.96,22.38-5.59,9.49-8.38,20.35-8.38,32.6s2.79,23.11,8.38,32.6c5.59,9.49,13.24,16.95,22.96,22.38,9.72,5.43,20.77,8.15,33.17,8.15s23.22-2.72,32.94-8.15c9.72-5.43,17.33-12.89,22.84-22.38,5.51-9.49,8.26-20.35,8.26-32.6,0-.46,0-.92-.01-1.38-.21-12.3-12.98-20.34-24.17-15.25h0Z"/>
+          <circle fill="#f08817" cx="575.49" cy="21.19" r="20.12"/>
+        </svg>
+      </div>
+    </div>
+
+    <p class="hero-sub" id="hero-sub" style="opacity:0;">
+      Every place starts from a different point.<br>
+      מערכת גיתום לרשת אתרי נדל"ן ותוכן למחתמים חדשים.
+    </p>
+    <div class="hero-actions" id="hero-actions" style="opacity:0;">
+      <a href="#districts" class="btn-primary">גלה את המחתמים</a>
+      <a href="#concept" class="btn-ghost">הרעיון שלנו</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const dot    = document.getElementById('hero-dot-pulse');
+      const clickLabel = document.getElementById('click-me-label');
+      const logo   = document.getElementById('hero-logo');
+      const eyebrow = document.getElementById('hero-eyebrow');
+      const sub    = document.getElementById('hero-sub');
+      const actions= document.getElementById('hero-actions');
+
+      // Phase 1: add pulse animation
+      dot.style.animation = 'dotPulse 1.8s ease-in-out infinite';
+
+      // Phase 2: on first scroll (or after 1.8s), morph dot → logo
+      let revealed = false;
+      function revealLogo() {
+        if (revealed) return;
+        revealed = true;
+
+        // Shrink dot and fade it out
+        dot.style.width       = '20px';
+        dot.style.height      = '20px';
+        dot.style.opacity     = '0';
+        dot.style.boxShadow   = 'none';
+        if (clickLabel) clickLabel.style.opacity = '0';
+
+        // Fade logo in
+        setTimeout(() => {
+          logo.style.opacity   = '1';
+          logo.style.transform = 'scale(1)';
+        }, 200);
+
+        // Fade in rest of content
+        setTimeout(() => {
+          eyebrow.style.transition = 'opacity 0.6s ease';
+          eyebrow.style.opacity = '1';
+        }, 600);
+        setTimeout(() => {
+          sub.style.transition = 'opacity 0.6s ease';
+          sub.style.opacity = '1';
+        }, 800);
+        setTimeout(() => {
+          actions.style.transition = 'opacity 0.6s ease';
+          actions.style.opacity = '1';
+        }, 1000);
+      }
+
+      dot.style.cursor = 'pointer';
+      dot.addEventListener('click', revealLogo, { once: true });
+    })();
+  </script>
+
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept" id="concept">
+  <div>
+    <div class="section-label">The Concept</div>
+    <h2 class="concept-title">נקודת אצילות לכל מחתם</h2>
+    <p class="concept-body">
+      CityPoint מסתמכת על רעיון נקודת המיקום. הנקודה היא האלמנט המחבר בין עיר, מחתם, תוכן ונדל"ן. בכל מחתם, נקודת האצילות משתנה — ויוצרת זהות ייחודית לאזור.
+    </p>
+    <div class="section-label">Every place has its own origin point.</div>
+  </div>
+  <div class="concept-visual">
+    <div id="orbit-diagram" style="position:relative;width:320px;height:320px;">
+      <canvas id="orbit-canvas" width="320" height="320" style="position:absolute;inset:0;"></canvas>
+
+      <!-- Labels (HTML so they stay readable) -->
+      <div id="label-sd"  style="position:absolute;font-family:'Heebo',sans-serif;font-size:11px;font-weight:700;color:#ed7174;white-space:nowrap;pointer-events:none;"></div>
+      <div id="label-tz"  style="position:absolute;font-family:'Heebo',sans-serif;font-size:11px;font-weight:700;color:#448bc9;white-space:nowrap;pointer-events:none;"></div>
+      <div id="label-ki"  style="position:absolute;font-family:'Heebo',sans-serif;font-size:11px;font-weight:700;color:#c4920a;white-space:nowrap;pointer-events:none;"></div>
+      <div id="label-more" style="position:absolute;font-family:'Heebo',sans-serif;font-size:11px;font-weight:700;color:#f08817;white-space:nowrap;pointer-events:none;"></div>
+    </div>
+
+    <script>
+    (function(){
+      const canvas = document.getElementById('orbit-canvas');
+      const ctx    = canvas.getContext('2d');
+      const cx = 160, cy = 160;
+      const r1 = 80, r2 = 128;
+
+      const planets = [
+        { id:'sd',   label:'שדה דב',       color:'#ed7174', r: r1, angle: -Math.PI/2, baseSpeed: 0.004  },
+        { id:'tz',   label:'צריפין',        color:'#448bc9', r: r2, angle: 0,          baseSpeed: 0.0025 },
+        { id:'ki',   label:'קריית המסלול', color:'#fac071', r: r1, angle:  Math.PI/2, baseSpeed: 0.004  },
+        { id:'more', label:'עוד',           color:'#f08817', r: r2, angle:  Math.PI,   baseSpeed: 0.0025 },
+      ];
+
+      // Mouse interaction state
+      let mouse = { x: cx, y: cy, inside: false };
+      let velocity = 0;          // drag velocity (radians/frame)
+      let dragging = false;
+      let lastAngle = null;
+      let globalSpin = 0;        // accumulated drag angle
+
+      canvas.style.cursor = 'grab';
+
+      function getAngle(e) {
+        const rect = canvas.getBoundingClientRect();
+        const mx = (e.clientX || e.touches[0].clientX) - rect.left - cx;
+        const my = (e.clientY || e.touches[0].clientY) - rect.top  - cy;
+        return Math.atan2(my, mx);
+      }
+
+      function onDown(e) {
+        dragging = true;
+        lastAngle = getAngle(e);
+        velocity = 0;
+        canvas.style.cursor = 'grabbing';
+        e.preventDefault();
+      }
+      function onMove(e) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = (e.clientX || e.touches[0].clientX) - rect.left;
+        mouse.y = (e.clientY || e.touches[0].clientY) - rect.top;
+        mouse.inside = true;
+        if (!dragging) return;
+        const a = getAngle(e);
+        let da = a - lastAngle;
+        if (da >  Math.PI) da -= Math.PI * 2;
+        if (da < -Math.PI) da += Math.PI * 2;
+        velocity = da;
+        globalSpin += da;
+        lastAngle = a;
+        e.preventDefault();
+      }
+      function onUp() {
+        dragging = false;
+        canvas.style.cursor = 'grab';
+        lastAngle = null;
+      }
+
+      canvas.addEventListener('mousedown',  onDown);
+      canvas.addEventListener('mousemove',  onMove);
+      canvas.addEventListener('mouseleave', () => { mouse.inside = false; onUp(); });
+      canvas.addEventListener('mouseup',    onUp);
+      canvas.addEventListener('touchstart', onDown, { passive:false });
+      canvas.addEventListener('touchmove',  onMove, { passive:false });
+      canvas.addEventListener('touchend',   onUp);
+
+      function drawOrbitRing(r, alpha) {
+        ctx.save();
+        ctx.setLineDash([4, 6]);
+        ctx.strokeStyle = `rgba(20,24,56,${alpha})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function drawCenter() {
+        [[44, 0.06], [32, 0.12], [20, 1]].forEach(([rad, alpha]) => {
+          ctx.beginPath();
+          ctx.arc(cx, cy, rad, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(240,136,23,${alpha})`;
+          ctx.fill();
+        });
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 8px "Lexend Deca", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('CITY',  cx, cy - 3);
+        ctx.fillText('POINT', cx, cy + 8);
+      }
+
+      function tick() {
+        // Inertia: spin slows down gradually
+        if (!dragging) {
+          velocity *= 0.92;
+          globalSpin += velocity;
+        }
+
+        // Mouse gravity: pull dots slightly toward cursor
+        const gravStrength = mouse.inside && !dragging ? 18 : 0;
+
+        ctx.clearRect(0, 0, 320, 320);
+        drawOrbitRing(r1, 0.2);
+        drawOrbitRing(r2, 0.12);
+        drawCenter();
+
+        planets.forEach(p => {
+          p.angle += p.baseSpeed + velocity;
+
+          // Base orbit position
+          let bx = cx + Math.cos(p.angle) * p.r;
+          let by = cy + Math.sin(p.angle) * p.r;
+
+          // Gravity pull toward mouse
+          const dx = mouse.x - bx;
+          const dy = mouse.y - by;
+          const dist = Math.sqrt(dx*dx + dy*dy) || 1;
+          const pull = Math.min(gravStrength, 120 / dist);
+          const x = bx + (dx / dist) * pull;
+          const y = by + (dy / dist) * pull;
+
+          // Line from center
+          ctx.save();
+          ctx.strokeStyle = 'rgba(20,24,56,0.15)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(x, y);
+          ctx.stroke();
+          ctx.restore();
+
+          // Dot glow on hover
+          const hovered = Math.sqrt((mouse.x-x)**2 + (mouse.y-y)**2) < 18;
+          if (hovered) {
+            ctx.beginPath();
+            ctx.arc(x, y, 13, 0, Math.PI * 2);
+            ctx.fillStyle = p.color + '30';
+            ctx.fill();
+          }
+
+          // Dot
+          ctx.beginPath();
+          ctx.arc(x, y, hovered ? 9 : 7, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+
+          // HTML label
+          const el = document.getElementById('label-' + p.id);
+          el.textContent = p.label;
+          const lx = x + (Math.cos(p.angle) >= 0 ? 14 : -(el.offsetWidth + 8));
+          el.style.left = lx + 'px';
+          el.style.top  = (y - 7) + 'px';
+          el.style.opacity = dragging ? '0.4' : '1';
+          el.style.transition = 'opacity 0.2s';
+        });
+
+        requestAnimationFrame(tick);
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) { tick(); observer.disconnect(); }
+      }, { threshold: 0.3 });
+      observer.observe(canvas);
+    })();
+    </script>
+  </div>
+</section>
+
+<!-- DISTRICTS -->
+<section class="districts" id="districts">
+  <div class="districts-header">
+    <div class="section-label" style="justify-content:center;">Sub-Brand System</div>
+    <h2 class="section-title">המחתמים שלנו</h2>
+    <p class="section-subtitle">כל מחתם מקבל נקודה בצבע ייחודי — שהופכת לצבע הדומיננטי של האתר ולשפה הוויזואלית שלו.</p>
+  </div>
+
+  <div class="districts-grid">
+
+    <div style="background:#f7f7f5;border-radius:20px;padding:48px 36px;display:flex;align-items:center;justify-content:center;min-height:220px;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;" onclick="window.open('https://sdedov.netlify.app','_blank')" onmouseenter="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.1)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+      <svg style="width:100%;max-width:260px;display:block;" id="sd-Layer_2"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 346.64 65.37">
+  <g id="sd-Layer_1-2" >
+    <g>
+      <g>
+        <path fill="#1d1d1b" d="M23.01,65.37c-3.31,0-6.38-.44-9.2-1.31-2.82-.87-5.38-2.19-7.67-3.97-2.3-1.77-4.34-3.97-6.15-6.58l6.45-7.41c2.85,4.07,5.58,6.89,8.19,8.46s5.72,2.35,9.33,2.35c2.21,0,4.21-.35,6.01-1.05,1.8-.7,3.23-1.66,4.27-2.88,1.05-1.22,1.57-2.61,1.57-4.18,0-1.05-.17-2.03-.52-2.96s-.89-1.77-1.61-2.53c-.73-.75-1.66-1.45-2.79-2.09-1.13-.64-2.46-1.21-3.97-1.7-1.51-.49-3.25-.92-5.23-1.26-3.14-.64-5.87-1.48-8.19-2.53-2.32-1.05-4.27-2.35-5.84-3.92-1.57-1.57-2.73-3.36-3.49-5.36-.76-2-1.13-4.26-1.13-6.76s.54-4.71,1.61-6.8c1.07-2.09,2.56-3.91,4.45-5.45,1.89-1.54,4.11-2.73,6.67-3.57,2.56-.84,5.32-1.26,8.28-1.26,3.14,0,6.01.41,8.63,1.22,2.61.81,4.94,2.02,6.97,3.62,2.03,1.6,3.72,3.56,5.06,5.88l-6.62,6.54c-1.16-1.92-2.47-3.53-3.92-4.84-1.45-1.31-3.05-2.29-4.79-2.96s-3.6-1-5.58-1c-2.27,0-4.24.35-5.93,1.05-1.69.7-3.01,1.67-3.97,2.92-.96,1.25-1.44,2.72-1.44,4.4,0,1.22.23,2.34.7,3.36.46,1.02,1.18,1.92,2.14,2.7.96.78,2.25,1.48,3.88,2.09,1.63.61,3.57,1.15,5.84,1.61,3.2.7,6.04,1.58,8.54,2.66,2.5,1.08,4.62,2.34,6.36,3.79,1.74,1.45,3.06,3.08,3.97,4.88.9,1.8,1.35,3.75,1.35,5.84,0,3.89-.9,7.26-2.7,10.11-1.8,2.85-4.36,5.04-7.67,6.58-3.31,1.54-7.26,2.31-11.85,2.31Z"/>
+        <path fill="#1d1d1b" d="M75.4,65.37c-4.18,0-7.92-1.03-11.2-3.09-3.28-2.06-5.88-4.88-7.8-8.46-1.92-3.57-2.88-7.66-2.88-12.25s.94-8.67,2.83-12.25c1.89-3.57,4.46-6.39,7.71-8.46,3.25-2.06,6.94-3.09,11.07-3.09,2.27,0,4.46.36,6.58,1.09,2.12.73,4.02,1.71,5.71,2.96,1.68,1.25,3.01,2.62,3.97,4.1.96,1.48,1.44,2.98,1.44,4.49l-2.62.17V0h8.98v64.5h-8.98v-10.9h1.74c0,1.39-.47,2.78-1.4,4.14-.93,1.37-2.17,2.63-3.7,3.79-1.54,1.16-3.31,2.09-5.32,2.79-2,.7-4.05,1.05-6.15,1.05ZM76.62,57.61c2.73,0,5.14-.7,7.23-2.09s3.73-3.3,4.92-5.71c1.19-2.41,1.79-5.16,1.79-8.24s-.6-5.83-1.79-8.24c-1.19-2.41-2.83-4.31-4.92-5.71-2.09-1.39-4.5-2.09-7.23-2.09s-5.14.7-7.23,2.09c-2.09,1.4-3.73,3.3-4.92,5.71-1.19,2.41-1.79,5.16-1.79,8.24s.6,5.83,1.79,8.24c1.19,2.41,2.83,4.31,4.92,5.71s4.5,2.09,7.23,2.09Z"/>
+        <path fill="#1d1d1b" d="M132.92,65.37c-4.71,0-8.88-1-12.51-3.01-3.63-2-6.48-4.75-8.54-8.24-2.06-3.49-3.09-7.5-3.09-12.03,0-3.6.58-6.89,1.74-9.85,1.16-2.96,2.77-5.54,4.84-7.71,2.06-2.18,4.53-3.86,7.41-5.06,2.88-1.19,6-1.79,9.37-1.79,2.96,0,5.72.57,8.28,1.7,2.56,1.13,4.78,2.69,6.67,4.66,1.89,1.98,3.34,4.31,4.36,7.02,1.02,2.7,1.5,5.65,1.44,8.85l-.09,3.84h-37.39l-2-7.15h31.64l-1.31,1.48v-2.09c-.17-1.92-.81-3.63-1.92-5.14-1.1-1.51-2.5-2.7-4.18-3.57-1.69-.87-3.52-1.31-5.49-1.31-3.14,0-5.78.6-7.93,1.79-2.15,1.19-3.78,2.94-4.88,5.23-1.1,2.3-1.66,5.13-1.66,8.5s.67,5.97,2,8.32c1.34,2.35,3.23,4.17,5.67,5.45,2.44,1.28,5.26,1.92,8.45,1.92,2.27,0,4.37-.38,6.32-1.13,1.95-.75,4.05-2.12,6.32-4.1l4.53,6.36c-1.39,1.39-3.09,2.62-5.1,3.66-2,1.05-4.13,1.87-6.36,2.48-2.24.61-4.43.92-6.58.92Z"/>
+        <path fill="#1d1d1b" d="M165.35,64.5V3.49h23.01c4.18,0,8,.74,11.46,2.22,3.46,1.48,6.46,3.59,9.02,6.32,2.56,2.73,4.53,5.96,5.93,9.67,1.39,3.72,2.09,7.82,2.09,12.29s-.7,8.59-2.09,12.33c-1.4,3.75-3.36,6.97-5.88,9.67-2.53,2.7-5.53,4.79-9.02,6.28-3.49,1.48-7.32,2.22-11.51,2.22h-23.01ZM172.15,59.1l-.78-1.22h16.56c3.19,0,6.15-.57,8.85-1.7,2.7-1.13,5.03-2.76,6.97-4.88,1.95-2.12,3.46-4.63,4.53-7.54,1.07-2.91,1.61-6.16,1.61-9.76s-.54-6.86-1.61-9.76c-1.08-2.91-2.6-5.42-4.58-7.54-1.98-2.12-4.3-3.75-6.97-4.88-2.67-1.13-5.61-1.7-8.8-1.7h-16.82l1.05-1.05v50.03Z"/>
+        <path fill="#1d1d1b" d="M247.63,65.37c-4.53,0-8.56-1.02-12.07-3.05-3.52-2.03-6.28-4.85-8.28-8.46-2-3.6-3.01-7.7-3.01-12.29s1-8.57,3.01-12.12c2-3.54,4.76-6.33,8.28-8.37,3.52-2.03,7.54-3.05,12.07-3.05s8.47,1.02,11.98,3.05c3.52,2.04,6.28,4.82,8.28,8.37,2,3.54,3.01,7.58,3.01,12.12s-1,8.69-3.01,12.29c-2,3.6-4.77,6.42-8.28,8.46-3.52,2.03-7.51,3.05-11.98,3.05ZM247.63,59.18c3.19,0,6.04-.77,8.54-2.31,2.5-1.54,4.45-3.63,5.84-6.28,1.4-2.64,2.09-5.65,2.09-9.02s-.7-6.36-2.09-8.98c-1.39-2.62-3.34-4.66-5.84-6.14-2.5-1.48-5.35-2.22-8.54-2.22s-6.06.74-8.59,2.22c-2.53,1.48-4.5,3.54-5.93,6.19-1.42,2.64-2.11,5.62-2.05,8.93-.06,3.37.62,6.38,2.05,9.02,1.42,2.64,3.4,4.74,5.93,6.28,2.53,1.54,5.39,2.31,8.59,2.31Z"/>
+        <path fill="#1d1d1b" d="M293.21,64.5l-19.18-45.5h7.23l15.17,37.22-1.74.96,16.65-38.18h6.97l-20.4,45.5h-4.71Z"/>
+      </g>
+      <circle fill="#ed7174" cx="333.46" cy="51.21" r="13.18"/>
+    </g>
+  </g>
+</svg>
+    </div>
+
+    <div style="background:#f7f7f5;border-radius:20px;padding:48px 36px;display:flex;align-items:center;justify-content:center;min-height:220px;">
+      <svg style="width:100%;max-width:220px;display:block;" id="tz-Layer_2"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284.55 67.2">
+  <g id="tz-Layer_1-2" >
+    <g>
+      <g>
+        <path fill="#1d1d1b" d="M17.08,67.2V15.25H0V6.19h44.1v9.07h-17.61v51.95h-9.41Z"/>
+        <path fill="#1d1d1b" d="M45.41,67.2v-7.5l23.62-31.55v1.05h-23.62v-7.76h33.38v7.32l-23.27,31.12-.35-.44h24.14v7.76h-33.91Z"/>
+        <path fill="#1d1d1b" d="M89.52,67.2V21.44h9.06v14.38l-.87-3.49c.64-2.21,1.73-4.21,3.27-6.01,1.54-1.8,3.31-3.23,5.32-4.27,2-1.05,4.08-1.57,6.23-1.57.99,0,1.93.09,2.83.26.9.17,1.61.38,2.14.61l-2.35,9.76c-.7-.29-1.47-.54-2.31-.74-.84-.2-1.67-.3-2.48-.3-1.57,0-3.07.3-4.49.92-1.42.61-2.67,1.45-3.75,2.53-1.08,1.08-1.93,2.33-2.57,3.75-.64,1.42-.96,2.98-.96,4.66v25.28h-9.06Z"/>
+        <path fill="#1d1d1b" d="M130.48,11.33c-1.92,0-3.4-.49-4.45-1.48-1.05-.99-1.57-2.38-1.57-4.18,0-1.69.54-3.05,1.61-4.1,1.07-1.05,2.54-1.57,4.4-1.57s3.4.49,4.45,1.48c1.05.99,1.57,2.38,1.57,4.18,0,1.69-.54,3.05-1.61,4.1-1.08,1.05-2.54,1.57-4.4,1.57ZM126.12,67.2V21.44h8.98v45.76h-8.98Z"/>
+        <path fill="#1d1d1b" d="M146.52,30.51v-8.28h27.19v8.28h-27.19ZM153.84,67.2V16.3c0-2.62.58-4.94,1.74-6.97,1.16-2.03,2.76-3.63,4.79-4.79,2.03-1.16,4.39-1.74,7.06-1.74,1.86,0,3.6.35,5.23,1.05,1.63.7,2.93,1.63,3.92,2.79l-3.05,6.89c-.76-.7-1.58-1.26-2.48-1.7-.9-.44-1.76-.65-2.57-.65-1.22,0-2.25.19-3.09.57-.84.38-1.47.96-1.87,1.74-.41.78-.61,1.73-.61,2.83v50.9h-9.06ZM188.97,11.33c-1.92,0-3.4-.49-4.44-1.48-1.05-.99-1.57-2.38-1.57-4.18,0-1.69.54-3.05,1.61-4.1,1.07-1.05,2.54-1.57,4.4-1.57s3.4.49,4.45,1.48c1.05.99,1.57,2.38,1.57,4.18,0,1.69-.54,3.05-1.61,4.1-1.08,1.05-2.54,1.57-4.4,1.57ZM184.61,67.2V21.44h8.98v45.76h-8.98Z"/>
+        <path fill="#1d1d1b" d="M207.36,67.2V21.44h8.98v9.41l-1.57,1.05c.58-2.03,1.71-3.91,3.4-5.62,1.68-1.71,3.69-3.11,6.01-4.18,2.32-1.07,4.71-1.61,7.15-1.61,3.49,0,6.39.68,8.72,2.05,2.32,1.37,4.07,3.44,5.23,6.23,1.16,2.79,1.74,6.31,1.74,10.55v27.89h-8.98v-27.28c0-2.61-.35-4.78-1.05-6.49-.7-1.71-1.77-2.96-3.22-3.75-1.45-.78-3.26-1.12-5.4-1-1.74,0-3.34.28-4.79.83-1.45.55-2.72,1.32-3.79,2.31-1.08.99-1.92,2.14-2.53,3.44-.61,1.31-.92,2.72-.92,4.23v27.72h-8.98Z"/>
+      </g>
+      <circle fill="#448bc9" cx="271.37" cy="53.91" r="13.18"/>
+    </g>
+  </g>
+</svg>
+    </div>
+
+    <div style="background:#f7f7f5;border-radius:20px;padding:48px 36px;display:flex;align-items:center;justify-content:center;min-height:220px;">
+      <svg style="width:100%;max-width:300px;display:block;" id="ki-Layer_2"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 681.3 87.25">
+  <g id="ki-Layer_1-2" >
+    <g>
+      <g>
+        <path fill="#1d1d1b" d="M0,67.2V6.19h9.41v61.01H0ZM7.84,48.72l-.52-10.55L39.31,6.19h12.38L7.84,48.72ZM40.44,67.2l-23.36-31.2,6.97-6.01,28.15,37.22h-11.77Z"/>
+        <path fill="#1d1d1b" d="M67.38,11.33c-1.92,0-3.4-.49-4.45-1.48-1.05-.99-1.57-2.38-1.57-4.18,0-1.69.54-3.05,1.61-4.1,1.07-1.05,2.54-1.57,4.4-1.57s3.4.49,4.45,1.48c1.05.99,1.57,2.38,1.57,4.18,0,1.69-.54,3.05-1.61,4.1-1.08,1.05-2.54,1.57-4.4,1.57ZM63.02,67.2V21.44h8.98v45.76h-8.98Z"/>
+        <path fill="#1d1d1b" d="M85.77,67.2V21.44h9.06v14.38l-.87-3.49c.64-2.21,1.73-4.21,3.27-6.01,1.54-1.8,3.31-3.23,5.32-4.27,2-1.05,4.08-1.57,6.23-1.57.99,0,1.93.09,2.83.26.9.17,1.61.38,2.14.61l-2.35,9.76c-.7-.29-1.47-.54-2.31-.74-.84-.2-1.67-.3-2.48-.3-1.57,0-3.07.3-4.49.92-1.42.61-2.67,1.45-3.75,2.53-1.08,1.08-1.93,2.33-2.57,3.75-.64,1.42-.96,2.98-.96,4.66v25.28h-9.06Z"/>
+        <path fill="#1d1d1b" d="M128.56,87.25l9.24-21.35.09,7.15-22.84-51.6h10.46l14.29,33.64c.29.58.64,1.47,1.05,2.66.41,1.19.75,2.37,1.05,3.53l-2.27.52c.46-1.22.92-2.44,1.35-3.66.44-1.22.86-2.44,1.26-3.66l11.94-33.03h10.63l-18.83,45.76-7.76,20.05h-9.68Z"/>
+        <path fill="#1d1d1b" d="M188.27,68.07c-3.78,0-7.22-1.05-10.33-3.14-3.11-2.09-5.59-4.94-7.45-8.54-1.86-3.6-2.79-7.67-2.79-12.2s.94-8.67,2.83-12.25c1.89-3.57,4.45-6.38,7.67-8.41,3.22-2.03,6.84-3.05,10.85-3.05,2.38,0,4.56.35,6.54,1.05,1.97.7,3.7,1.67,5.19,2.92,1.48,1.25,2.7,2.69,3.66,4.31.96,1.63,1.55,3.37,1.79,5.23l-2-.7v-11.85h9.06v45.76h-9.06v-10.9l2.09-.61c-.35,1.57-1.06,3.09-2.14,4.58-1.08,1.48-2.44,2.8-4.1,3.97-1.66,1.16-3.49,2.09-5.49,2.79-2,.7-4.11,1.05-6.32,1.05ZM190.62,59.79c2.73,0,5.14-.67,7.23-2s3.73-3.18,4.92-5.54c1.19-2.35,1.79-5.04,1.79-8.06s-.6-5.61-1.79-7.93c-1.19-2.32-2.83-4.15-4.92-5.49-2.09-1.34-4.5-2-7.23-2s-5.04.67-7.1,2c-2.06,1.34-3.69,3.17-4.88,5.49-1.19,2.32-1.79,4.97-1.79,7.93s.6,5.71,1.79,8.06c1.19,2.35,2.82,4.2,4.88,5.54,2.06,1.34,4.43,2,7.1,2Z"/>
+        <path fill="#1d1d1b" d="M222,30.16v-8.72h29.11v8.72h-29.11ZM231.5,67.2V9.76h8.98v57.44h-8.98Z"/>
+        <path fill="#1d1d1b" d="M262.01,67.2V6.19h6.8v61.01h-6.8ZM265.32,40.09v-6.62h40.36v6.62h-40.36ZM302.8,67.2V6.19h6.8v61.01h-6.8Z"/>
+        <path fill="#1d1d1b" d="M342.72,68.07c-3.95,0-7.53-1.03-10.72-3.09-3.2-2.06-5.72-4.88-7.58-8.46-1.86-3.57-2.79-7.63-2.79-12.16s.96-8.66,2.88-12.2c1.92-3.54,4.49-6.33,7.71-8.37,3.22-2.03,6.84-3.05,10.85-3.05,2.38,0,4.59.35,6.62,1.05,2.03.7,3.85,1.67,5.45,2.92,1.6,1.25,2.93,2.7,4.01,4.36,1.07,1.66,1.82,3.44,2.22,5.36l-1.92-.96.26-11.77h6.54v45.5h-6.62v-11.16l1.74-1.13c-.41,1.74-1.19,3.41-2.35,5.01-1.16,1.6-2.57,3.01-4.23,4.23-1.66,1.22-3.52,2.18-5.58,2.88-2.06.7-4.23,1.05-6.49,1.05ZM344.2,61.8c3.02,0,5.72-.74,8.11-2.22,2.38-1.48,4.26-3.54,5.62-6.19,1.36-2.64,2.05-5.65,2.05-9.02s-.68-6.36-2.05-8.98c-1.37-2.61-3.24-4.68-5.62-6.19-2.38-1.51-5.09-2.27-8.11-2.27s-5.8.76-8.15,2.27c-2.35,1.51-4.21,3.57-5.58,6.19-1.37,2.62-2.05,5.61-2.05,8.98s.67,6.29,2,8.93c1.34,2.64,3.2,4.72,5.58,6.23,2.38,1.51,5.11,2.27,8.19,2.27Z"/>
+        <path fill="#1d1d1b" d="M378.89,67.2V21.7h6.54l.17,10.37-1.31.44c.46-1.74,1.23-3.33,2.31-4.75,1.07-1.42,2.37-2.66,3.88-3.7,1.51-1.05,3.17-1.84,4.97-2.4,1.8-.55,3.69-.83,5.67-.83,2.38,0,4.52.39,6.41,1.18,1.89.78,3.49,2.12,4.79,4.01,1.31,1.89,2.31,4.37,3.01,7.45l-1.57-.79.61-1.48c.58-1.34,1.44-2.63,2.57-3.88,1.13-1.25,2.44-2.37,3.92-3.36,1.48-.99,3.11-1.76,4.88-2.31,1.77-.55,3.59-.83,5.45-.83,3.19,0,5.9.68,8.11,2.05,2.21,1.37,3.88,3.44,5.01,6.23s1.7,6.33,1.7,10.63v27.46h-6.71v-27.11c0-3.02-.38-5.49-1.13-7.41-.76-1.92-1.87-3.36-3.36-4.31-1.48-.96-3.36-1.44-5.62-1.44-1.98,0-3.79.33-5.45,1-1.66.67-3.08,1.6-4.27,2.79s-2.12,2.54-2.79,4.05c-.67,1.51-1,3.14-1,4.88v27.54h-6.62v-27.19c0-2.91-.39-5.32-1.18-7.23-.78-1.92-1.93-3.37-3.44-4.36-1.51-.99-3.37-1.48-5.58-1.48-1.92,0-3.69.33-5.32,1-1.63.67-3.04,1.58-4.23,2.75-1.19,1.16-2.12,2.5-2.79,4.01-.67,1.51-1,3.14-1,4.88v27.63h-6.62Z"/>
+        <path fill="#1d1d1b" d="M476.17,68.07c-3.95,0-7.53-1.03-10.72-3.09-3.2-2.06-5.72-4.88-7.58-8.46-1.86-3.57-2.79-7.63-2.79-12.16s.96-8.66,2.88-12.2c1.92-3.54,4.49-6.33,7.71-8.37,3.22-2.03,6.84-3.05,10.85-3.05,2.38,0,4.59.35,6.62,1.05,2.03.7,3.85,1.67,5.45,2.92,1.6,1.25,2.93,2.7,4.01,4.36,1.07,1.66,1.82,3.44,2.22,5.36l-1.92-.96.26-11.77h6.54v45.5h-6.62v-11.16l1.74-1.13c-.41,1.74-1.19,3.41-2.35,5.01-1.16,1.6-2.57,3.01-4.23,4.23-1.66,1.22-3.52,2.18-5.58,2.88-2.06.7-4.23,1.05-6.49,1.05ZM477.65,61.8c3.02,0,5.72-.74,8.11-2.22,2.38-1.48,4.26-3.54,5.62-6.19,1.36-2.64,2.05-5.65,2.05-9.02s-.68-6.36-2.05-8.98c-1.37-2.61-3.24-4.68-5.62-6.19-2.38-1.51-5.09-2.27-8.11-2.27s-5.8.76-8.15,2.27c-2.35,1.51-4.21,3.57-5.58,6.19-1.37,2.62-2.05,5.61-2.05,8.98s.67,6.29,2,8.93c1.34,2.64,3.2,4.72,5.58,6.23,2.38,1.51,5.11,2.27,8.19,2.27Z"/>
+        <path fill="#1d1d1b" d="M527.33,68.07c-3.89,0-7.38-.73-10.46-2.18-3.08-1.45-5.52-3.37-7.32-5.75l4.62-4.01c1.69,2.03,3.67,3.57,5.97,4.62,2.29,1.05,4.87,1.57,7.71,1.57,1.45,0,2.76-.16,3.92-.48,1.16-.32,2.18-.8,3.05-1.44.87-.64,1.54-1.39,2-2.27.46-.87.7-1.83.7-2.88,0-1.92-.84-3.51-2.53-4.79-.76-.52-1.83-1.06-3.23-1.61-1.39-.55-3.08-1.09-5.06-1.61-3.25-.93-5.96-1.87-8.11-2.83-2.15-.96-3.83-2.08-5.06-3.36-.87-1.05-1.53-2.18-1.96-3.4-.44-1.22-.65-2.56-.65-4.01,0-1.86.39-3.57,1.18-5.14.78-1.57,1.89-2.95,3.31-4.14,1.42-1.19,3.11-2.09,5.06-2.7,1.95-.61,4.05-.92,6.32-.92,2.15,0,4.27.29,6.36.87,2.09.58,4.04,1.42,5.84,2.53,1.8,1.1,3.34,2.41,4.62,3.92l-4.01,4.36c-1.1-1.16-2.32-2.21-3.66-3.14-1.34-.93-2.75-1.66-4.23-2.18-1.48-.52-3.01-.78-4.58-.78-1.39,0-2.69.17-3.88.52-1.19.35-2.21.83-3.05,1.44-.84.61-1.48,1.35-1.92,2.22-.44.87-.65,1.83-.65,2.88,0,.87.17,1.66.52,2.35s.84,1.31,1.48,1.83c.81.64,1.96,1.23,3.44,1.79,1.48.55,3.33,1.12,5.54,1.7,2.56.7,4.72,1.41,6.49,2.13,1.77.73,3.24,1.58,4.4,2.57,1.57,1.16,2.69,2.5,3.36,4.01.67,1.51,1,3.23,1,5.14,0,2.56-.71,4.82-2.14,6.8-1.42,1.98-3.39,3.53-5.88,4.66-2.5,1.13-5.35,1.7-8.54,1.7Z"/>
+        <path fill="#1d1d1b" d="M554.35,67.2V2.7h6.54v64.5h-6.54Z"/>
+        <path fill="#1d1d1b" d="M589.48,68.07c-3.49,0-6.44-.71-8.85-2.14-2.41-1.42-4.24-3.5-5.49-6.23-1.25-2.73-1.87-6.13-1.87-10.2v-27.8h6.62v26.5c0,3.08.42,5.65,1.26,7.71.84,2.06,2.12,3.62,3.83,4.66,1.71,1.05,3.82,1.57,6.32,1.57,1.92,0,3.69-.33,5.32-1,1.63-.67,3.05-1.58,4.27-2.75,1.22-1.16,2.18-2.53,2.88-4.1.7-1.57,1.05-3.22,1.05-4.97v-27.63h6.54v45.5h-6.45l-.26-9.59,1.05-.52c-.7,2.03-1.86,3.88-3.49,5.53-1.63,1.66-3.56,2.98-5.8,3.97-2.24.99-4.55,1.48-6.93,1.48Z"/>
+        <path fill="#1d1d1b" d="M624.26,67.2V2.7h6.54v64.5h-6.54Z"/>
+      </g>
+      <circle fill="#fac071" cx="668.12" cy="53.91" r="13.18"/>
+    </g>
+  </g>
+</svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- COLOR SYSTEM -->
+<section class="color-section" style="background:var(--light);padding:120px 60px;">
+  <div style="text-align:center;margin-bottom:64px;">
+    <div class="section-label" style="justify-content:center;">Color System</div>
+    <h2 class="section-title">מערכת הצבעים</h2>
+    <p class="section-subtitle">הצבעים אינם רק טישוט — הם כלי לזיהוי. כל צבע יוצר אופי מקומי ומחבר מהלוגו לרתא לכפתורים.</p>
+  </div>
+
+  <div id="color-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;max-width:1100px;margin:0 auto;">
+
+    <!-- Master brand orange -->
+    <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+      <div style="background:#f08817;height:160px;position:relative;display:flex;align-items:flex-end;padding:20px;">
+        <span style="font-size:11px;font-weight:600;letter-spacing:2px;color:rgba(255,255,255,0.7);text-transform:uppercase;">Master Brand</span>
+      </div>
+      <div style="background:white;padding:20px;">
+        <div style="font-weight:700;font-size:15px;color:var(--navy);margin-bottom:4px;">Orange</div>
+        <div style="font-size:12px;color:#888;">#f08817</div>
+        <div style="font-size:11px;color:#aaa;margin-top:6px;">אנרגיה · התחדשות · תנועה</div>
+      </div>
+    </div>
+
+    <!-- Master brand navy -->
+    <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+      <div style="background:#141838;height:160px;position:relative;display:flex;align-items:flex-end;padding:20px;">
+        <span style="font-size:11px;font-weight:600;letter-spacing:2px;color:rgba(255,255,255,0.4);text-transform:uppercase;">Master Brand</span>
+      </div>
+      <div style="background:white;padding:20px;">
+        <div style="font-weight:700;font-size:15px;color:var(--navy);margin-bottom:4px;">Navy</div>
+        <div style="font-size:12px;color:#888;">#141838</div>
+        <div style="font-size:11px;color:#aaa;margin-top:6px;">יציבות · מקצועיות</div>
+      </div>
+    </div>
+
+    <!-- Sde Dov coral -->
+    <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+      <div style="background:#ed7174;height:160px;position:relative;display:flex;align-items:flex-end;padding:20px;">
+        <span style="font-size:11px;font-weight:600;letter-spacing:2px;color:rgba(255,255,255,0.7);text-transform:uppercase;">Sde Dov</span>
+      </div>
+      <div style="background:white;padding:20px;">
+        <div style="font-weight:700;font-size:15px;color:var(--navy);margin-bottom:4px;">Coral</div>
+        <div style="font-size:12px;color:#888;">#ed7174</div>
+        <div style="font-size:11px;color:#aaa;margin-top:6px;">לייפסטייל · קהילה · מגורים</div>
+      </div>
+    </div>
+
+    <!-- Tzrifin blue -->
+    <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+      <div style="background:#448bc9;height:160px;position:relative;display:flex;align-items:flex-end;padding:20px;">
+        <span style="font-size:11px;font-weight:600;letter-spacing:2px;color:rgba(255,255,255,0.7);text-transform:uppercase;">Tzrifin</span>
+      </div>
+      <div style="background:white;padding:20px;">
+        <div style="font-weight:700;font-size:15px;color:var(--navy);margin-bottom:4px;">Blue</div>
+        <div style="font-size:12px;color:#888;">#448bc9</div>
+        <div style="font-size:11px;color:#aaa;margin-top:6px;">יציבות · סדר · אמינות</div>
+      </div>
+    </div>
+
+    <!-- Kiryat yellow -->
+    <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+      <div style="background:#fac071;height:160px;position:relative;display:flex;align-items:flex-end;padding:20px;">
+        <span style="font-size:11px;font-weight:600;letter-spacing:2px;color:rgba(255,255,255,0.7);text-transform:uppercase;">Kiryat Hamaslul</span>
+      </div>
+      <div style="background:white;padding:20px;">
+        <div style="font-weight:700;font-size:15px;color:var(--navy);margin-bottom:4px;">Yellow</div>
+        <div style="font-size:12px;color:#888;">#fac071</div>
+        <div style="font-size:11px;color:#aaa;margin-top:6px;">תנועה · התחדשות</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DOT SYSTEM -->
+<section class="dot-system" id="about">
+  <div style="text-align:center;max-width:600px;margin:0 auto;">
+    <div class="section-label" style="justify-content:center;color:var(--orange);">The Dot System</div>
+    <h2 class="section-title" style="color:var(--white);">מנקודה לשפה</h2>
+    <p class="section-subtitle" style="color:rgba(255,255,255,0.45);">הנקודה ממשיכה מעבר ללוגו והופכת לשפה — מסמנת מיקומים, מדגישה תוכן, מחברת בין כל רכיבי המותג.</p>
+  </div>
+
+  <div class="dot-system-grid">
+    <div class="dot-use">
+      <div class="dot-use-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="12" r="5" fill="var(--orange)"/>
+          <path d="M16 17 L16 28" stroke="var(--orange)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 28 L22 28" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="dot-use-label">Map Marker</span>
+    </div>
+
+    <div class="dot-use">
+      <div class="dot-use-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="8" cy="10" r="3" fill="var(--orange)"/>
+          <line x1="14" y1="10" x2="26" y2="10" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="8" cy="18" r="3" fill="var(--orange)" opacity="0.6"/>
+          <line x1="14" y1="18" x2="26" y2="18" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="8" cy="26" r="3" fill="var(--orange)" opacity="0.35"/>
+          <line x1="14" y1="26" x2="26" y2="26" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="dot-use-label">Bullet Point</span>
+    </div>
+
+    <div class="dot-use">
+      <div class="dot-use-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <line x1="6" y1="16" x2="12" y2="16" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <circle cx="16" cy="16" r="4" fill="var(--orange)"/>
+          <line x1="20" y1="16" x2="26" y2="16" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <span class="dot-use-label">Divider</span>
+    </div>
+
+    <div class="dot-use">
+      <div class="dot-use-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="8" cy="8" r="2.5" fill="var(--orange)" opacity="0.9"/>
+          <circle cx="16" cy="8" r="2.5" fill="var(--orange)" opacity="0.6"/>
+          <circle cx="24" cy="8" r="2.5" fill="var(--orange)" opacity="0.3"/>
+          <circle cx="8" cy="16" r="2.5" fill="var(--orange)" opacity="0.6"/>
+          <circle cx="16" cy="16" r="2.5" fill="var(--orange)" opacity="0.4"/>
+          <circle cx="24" cy="16" r="2.5" fill="var(--orange)" opacity="0.2"/>
+          <circle cx="8" cy="24" r="2.5" fill="var(--orange)" opacity="0.3"/>
+          <circle cx="16" cy="24" r="2.5" fill="var(--orange)" opacity="0.2"/>
+          <circle cx="24" cy="24" r="2.5" fill="var(--orange)" opacity="0.1"/>
+        </svg>
+      </div>
+      <span class="dot-use-label">Pattern</span>
+    </div>
+
+    <div class="dot-use">
+      <div class="dot-use-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect x="6" y="8" width="20" height="3" rx="1.5" fill="rgba(255,255,255,0.2)"/>
+          <rect x="6" y="14" width="16" height="3" rx="1.5" fill="rgba(255,255,255,0.15)"/>
+          <rect x="6" y="20" width="12" height="3" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+          <circle cx="26" cy="22" r="4" fill="var(--orange)"/>
+        </svg>
+      </div>
+      <span class="dot-use-label">Ending Point</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div>
+    <div class="stat-number">4+</div>
+    <div class="stat-label">מחתמים בפיתוח</div>
+  </div>
+  <div>
+    <div class="stat-number">1</div>
+    <div class="stat-label">מערכת גיתום אחידה</div>
+  </div>
+  <div>
+    <div class="stat-number">∞</div>
+    <div class="stat-label">זהויות מקומיות</div>
+  </div>
+  <div>
+    <div class="stat-number">·</div>
+    <div class="stat-label">נקודת אצילות</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 933.02 126.74" style="height:32px;width:auto;">
+  <g>
+    <path fill="white" d="M0,63.29C0,26.86,23,0,59.76,0c28.71,0,51.03,16.79,53.72,45.32h-29.54c-1.85-13.43-10.41-21.66-24.17-21.66-19.81,0-29.54,16.95-29.54,39.62s9.57,39.78,29.54,39.78c13.76,0,22.66-8.23,24.51-23.5h29.54c-2.35,30.05-25.35,47.17-54.05,47.17C22.49,126.74,0,99.71,0,63.29Z"/>
+    <path fill="white" d="M127.75,2.52h28.87v121.7h-28.87V2.52Z"/>
+    <path fill="white" d="M189.87,86.62V26.19h-21.49V2.52h93v23.67h-42.47v56.07c0,14.94,5.37,19.81,18.97,19.81,6.88,0,13.93-1.34,20.65-3.52h.67v23.67c-9.06,3.02-19.98,4.53-30.55,4.53-27.7,0-38.78-11.08-38.78-40.12Z"/>
+    <path fill="white" d="M283.88,124.73v-21.32h.67c2.52.67,5.37,1.01,9.9,1.01,7.72,0,12.92-2.85,16.62-9.9l1.01-2.18h-8.39L267.26,2.52h30.72l21.65,57.24c1.34,3.19,2.52,6.55,3.69,9.9h.5c1.18-3.53,2.18-6.55,3.53-9.9l20.65-57.24h29.71l-36.93,92.16c-9.23,23.5-20.14,32.06-40.96,32.06-6.04,0-11.25-.67-15.95-2.02Z"/>
+    <path fill="white" d="M386.11,2.52h49.52c27.03,0,45.99,14.1,45.99,40.29s-19.14,40.96-45.99,40.96h-20.65v40.46h-28.87V2.52ZM452.59,43.14c0-12.76-7.22-17.63-19.47-17.63h-18.13v35.25h18.13c12.09,0,19.47-5.04,19.47-17.63Z"/>
+    <path fill="white" d="M629.87,2.52h28.87v121.7h-28.87V2.52Z"/>
+    <path fill="white" d="M704.24,2.52v17.29h.67c8.9-13.09,21.66-19.81,39.11-19.81,25.85,0,39.45,14.77,39.45,45.66v78.56h-29.04V50.19c0-18.3-6.55-26.02-20.65-26.02-17.12,0-28.37,11.75-28.37,29.38v70.67h-28.87V2.52h27.7Z"/>
+    <path fill="white" d="M816.71,86.62V26.19h-21.49V2.52h93v23.67h-42.47v56.07c0,14.94,5.37,19.81,18.97,19.81,6.88,0,13.93-1.34,20.65-3.52h.67v23.67c-9.06,3.02-19.98,4.53-30.55,4.53-27.7,0-38.78-11.08-38.78-40.12Z"/>
+    <circle fill="#f08817" cx="914.53" cy="103.6" r="18.49"/>
+    <path fill="white" d="M592.34,43.96c-5.64,2.57-9.01,8.31-8.87,14.51.02.7.02,1.4,0,2.11.15,6.58-1.11,12.51-3.79,17.79-2.68,5.28-6.39,9.41-11.13,12.4-4.75,2.98-10.1,4.48-16.07,4.48s-11.56-1.49-16.3-4.48c-4.75-2.98-8.49-7.12-11.25-12.4-2.75-5.28-4.06-11.21-3.9-17.79-.15-6.73,1.15-12.7,3.9-17.91,2.75-5.2,6.5-9.33,11.25-12.4.86-.56,1.75-1.06,2.66-1.52,4.92-2.45,7.77-7.74,7.4-13.23h0c-.69-10.22-11.21-16.91-20.67-12.97-2.15.89-4.24,1.91-6.26,3.04-9.72,5.43-17.37,12.89-22.96,22.38-5.59,9.49-8.38,20.35-8.38,32.6s2.79,23.11,8.38,32.6c5.59,9.49,13.24,16.95,22.96,22.38,9.72,5.43,20.77,8.15,33.17,8.15s23.22-2.72,32.94-8.15c9.72-5.43,17.33-12.89,22.84-22.38,5.51-9.49,8.26-20.35,8.26-32.6,0-.46,0-.92-.01-1.38-.21-12.3-12.98-20.34-24.17-15.25h0Z"/>
+    <circle fill="#f08817" cx="575.49" cy="21.19" r="20.12"/>
+  </g>
+</svg></div>
+  <span class="footer-copy">© 2025 CityPoint. All rights reserved.</span>
+  <ul class="footer-links">
+    <li><a href="#">אודות</a></li>
+    <li><a href="#">מחתמים</a></li>
+    <li><a href="#">צור קשר</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
