@@ -650,13 +650,15 @@
   @media (max-width: 600px) {
     .nav-logo-full { display: none; }
     .nav-logo-icon { display: flex; align-items: center; }
-    nav { justify-content: center; }
-    .nav-logo { justify-content: center; width: 100%; }
+    nav { justify-content: center; position: relative; }
+    .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); }
   }
   @media (max-width: 600px) {
     nav { padding: 14px 16px; }
     .hero-content { padding: 0 20px; }
-    .hero-sub { font-size: 15px; margin-bottom: 36px; }
+    .hero-eyebrow { margin-bottom: 16px; font-size: 10px; }
+    .hero-sub { font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
+    .hero-actions { gap: 10px; }
     .btn-primary, .btn-ghost { padding: 13px 26px; font-size: 14px; }
     .concept { padding: 60px 20px; gap: 36px; }
     .concept-visual { display: none; }
